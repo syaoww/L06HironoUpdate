@@ -49,7 +49,7 @@ const Home = ({navigation}) => {
     };
 
     return (
-        <View>
+        <View style={{backgroundColor:'oldlace'}}>
             <StatusBar/>
             <Button
                 title='Add Figure'

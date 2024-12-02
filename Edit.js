@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {datasource} from "./Data";
 import {TextInput, View, Text, Button, Alert, Image} from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 const Edit = ({navigation, route}) => {
     const [name, setName] = useState(route.params.key);
+    const [type, setType] = useState('');
     return (
         <View style={{padding: 10}}>
             <View style={{padding: 10}}>
@@ -12,9 +14,23 @@ const Edit = ({navigation, route}) => {
                            onChangeText= {(text)=> setName(text)}/>
             </View>
 
+            <View style={{padding: 10}}>
+                <RNPickerSelect
+                    value={type}
+                    onValueChange={(value)=>setType(value)}
+                    items={[
+                        {label:"The Other One", value:"The Other One"},
+                        {label:"Little Mischief", value:"Little Mischief"},
+                        {label:"Mime", value: "Mime"},
+                        {label:"The Little Prince", value: "The Little Prince"},
+                    ]}
+                />
+            </View>
+
             <View style={{padding: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View style={{flex:1, margin: 10}}>
                     <Button title="SAVE"
+                            color={"#91754a"}
                             onPress={()=> {
                                 let indexNum = 1;
                                 if (route.params.type == 'The Other One') {
@@ -37,6 +53,7 @@ const Edit = ({navigation, route}) => {
                 </View>
                 <View style={{flex:1, margin: 10}}>
                     <Button title="DELETE"
+                            color={"#91754a"}
                             onPress={()=> {
                                 let indexNum = 1;
                                 if (route.params.type == 'The Other One') {
@@ -67,3 +84,5 @@ const Edit = ({navigation, route}) => {
 };
 
 export default Edit;
+
+// changing section type doesnt work..

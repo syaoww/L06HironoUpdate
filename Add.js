@@ -5,12 +5,18 @@ import RNPickerSelect from 'react-native-picker-select';
 
 const Add = ({navigation}) => {
     const [name, setName] = useState('');
-    const [type, setType] = useState('The Other One');
+    const [image, setImage] = useState('require(./img/XXX.png)');
+    const [type, setType] = useState('');
     return (
         <View style={{padding: 10}}>
             <View style={{padding: 10}}>
                 <Text style={{fontWeight: 'bold'}}>Hirono Name:</Text>
-                <TextInput style={{borderWidth: 1}} onChangeText= {(text)=> setName(text)}/>
+                <TextInput style={{borderWidth: 1}} onChangeText= {(text)=> setName(text)} value={name}/>
+            </View>
+
+            <View style={{padding: 10}}>
+                <Text style={{fontWeight: 'bold'}}>Image File:</Text>
+                <TextInput style={{borderWidth: 1}} onChangeText= {(text)=> setImage(text)} value={image}/>
             </View>
 
             <View style={{padding: 10}}>
@@ -25,9 +31,11 @@ const Add = ({navigation}) => {
                     ]}
                 />
             </View>
+
             <Button title="SUBMIT"
+                    color={"#91754a"}
                     onPress={()=> {
-                        let item = {key: name};
+                        let item = {key: name, image: {image}};
                         let indexNum = 1;
                         if (type == 'The Other One') {
                             indexNum = 0;
@@ -50,3 +58,5 @@ const Add = ({navigation}) => {
     );
 };
 export default Add;
+
+// cannot add image because image is now a string
